@@ -1,3 +1,5 @@
+package com.example;
+
 public class AlphabetHandler {
     private static final String ALPHABET =
             "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz" +
