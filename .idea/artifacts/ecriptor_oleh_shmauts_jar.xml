@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="ecriptor.oleh.shmauts:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/ecriptor_oleh_shmauts_jar</output-path>
+    <root id="archive" name="ecriptor.oleh.shmauts.jar">
+      <element id="module-output" name="ecriptor.oleh.shmauts" />
+    </root>
+  </artifact>
+</component>
