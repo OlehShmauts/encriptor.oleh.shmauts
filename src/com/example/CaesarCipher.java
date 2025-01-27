@@ -3,34 +3,40 @@ package com.example;
 public class CaesarCipher {
     private final AlphabetHandler alphabetHandler;
 
-    public CaesarCipher() {
-        this.alphabetHandler = new AlphabetHandler();
+    public CaesarCipher(AlphabetHandler alphabetHandler) {
+        this.alphabetHandler = alphabetHandler;
     }
 
-    public String encrypt(String text, int key) {
-        return shiftText(text, key);
+    public AlphabetHandler getAlphabetHandler() {
+        return alphabetHandler;
     }
 
-    public String decrypt(String text, int key) {
-        return shiftText(text, -key);
+    public String encrypt(String text, int key, String languageCode) {
+        String alphabet = alphabetHandler.getAlphabet(languageCode);
+        return shiftText(text, key, alphabet);
     }
 
-    private String shiftText(String text, int shift) {
+    public String decrypt(String text, int key, String languageCode) {
+        String alphabet = alphabetHandler.getAlphabet(languageCode);
+        return shiftText(text, -key, alphabet);
+    }
+
+    private String shiftText(String text, int shift, String alphabet) {
         if (text == null || text.isEmpty()) {
             return "";
         }
 
         StringBuilder result = new StringBuilder();
-        int alphabetLength = alphabetHandler.getAlphabetLength();
+        int alphabetLength = alphabet.length();
 
         for (char c : text.toCharArray()) {
-            int index = alphabetHandler.getIndex(c);
+            int index = alphabet.indexOf(c);
             if (index != -1) {
                 int newIndex = (index + shift) % alphabetLength;
                 if (newIndex < 0) {
                     newIndex += alphabetLength;
                 }
-                result.append(alphabetHandler.getCharAt(newIndex));
+                result.append(alphabet.charAt(newIndex));
             } else {
                 result.append(c);
             }
